@@ -1,0 +1,30 @@
+name: Main Branch CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_unit_tests:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install Node Modules
+      run: npm install
+
+    - name: Build deps
+      run: npm run build 
+
+    - name: Run Unit Tests
+      run: npm run tests
+      
+    
+  
